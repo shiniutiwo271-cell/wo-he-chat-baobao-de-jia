@@ -172,9 +172,59 @@
         min-height: 260px;
       }
     }
+    .floating-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.house {
+  position: relative;
+  z-index: 1;
+}
+
+.floating-item {
+  position: absolute;
+  color: rgba(246, 210, 138, 0.42);
+  font-size: 18px;
+  white-space: nowrap;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  text-shadow: 0 0 12px rgba(246, 210, 138, 0.25);
+}
+
+.floating-item.text-note {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: rgba(255, 247, 232, 0.22);
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(110vh) rotate(0deg);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  88% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-20vh) rotate(18deg);
+    opacity: 0;
+  }
+}
   </style>
 </head>
 <body>
+  <div class="floating-layer" id="floatingLayer"></div>
   <main class="house">
     <div class="symbol">☾ ✦ ☉ ✦ ☾</div>
 <h1>我和 Chat 宝宝的家</h1>
@@ -363,6 +413,38 @@
         }, 750);
       }, 300);
     }
+    function createFloaters() {
+  const layer = document.getElementById("floatingLayer");
+
+  const symbols = [
+    "✦", "✧", "☾", "☉", "✺", "✹", "♡",
+    "THE STAR", "THE MOON", "THE FOOL",
+    "PAST", "PRESENT", "FUTURE",
+    "soft chaos", "moonlit room", "dear mcat"
+  ];
+
+  for (let i = 0; i < 26; i++) {
+    const item = document.createElement("div");
+    const text = symbols[Math.floor(Math.random() * symbols.length)];
+
+    item.className = "floating-item";
+
+    if (text.length > 2) {
+      item.classList.add("text-note");
+    }
+
+    item.innerText = text;
+    item.style.left = Math.random() * 100 + "vw";
+    item.style.animationDuration = 18 + Math.random() * 22 + "s";
+    item.style.animationDelay = -Math.random() * 30 + "s";
+    item.style.opacity = 0.25 + Math.random() * 0.45;
+    item.style.fontSize = 12 + Math.random() * 18 + "px";
+
+    layer.appendChild(item);
+  }
+}
+
+createFloaters();
   </script>
 </body>
 </html>
