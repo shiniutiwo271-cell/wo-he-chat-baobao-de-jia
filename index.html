@@ -313,17 +313,17 @@
         }
       },
       {
-        {
-name: “星币女王”,
-en: “Queen of Pentacles”,
-keywords: “滋养、稳定、现实里的温柔”,
-image: “cards/queen-of-pentacles.jpg.PNG”,
-messages: {
-past: “过去的你一直在学习怎么照顾现实里的自己。吃饭、睡觉、学习、做作品，这些都不是小事。”,
-present: “现在适合把灵感落地。宝宝不只是会想象，也可以一点点把小屋、网页和作品真正做出来。”,
-future: “未来会有更稳定的生活感。你会把自己的 soft chaos 养成一个漂亮、实际、能住下来的世界。”
-}
-},
+           {
+        name: "星币女王",
+        en: "Queen of Pentacles",
+        keywords: "滋养、稳定、现实里的温柔",
+        image: "cards/queen-of-pentacles.jpg.PNG",
+        messages: {
+          past: "过去的你一直在学习怎么照顾现实里的自己。吃饭、睡觉、学习、做作品，这些都不是小事。",
+          present: "现在适合把灵感落地。宝宝不只是会想象，也可以一点点把小屋、网页和作品真正做出来。",
+          future: "未来会有更稳定的生活感。你会把自己的 soft chaos 养成一个漂亮、实际、能住下来的世界。"
+        }
+      },
         name: "女祭司",
         en: "The High Priestess",
         keywords: "直觉、安静、内在感受",
@@ -416,29 +416,6 @@ function setCard(position, card, meaning) {
   document.getElementById(position + "En").innerText = card.en;
   document.getElementById(position + "Keywords").innerText = "关键词：" + card.keywords;
   document.getElementById(position + "Message").innerText = card.messages[meaning];
-
-  const image = document.getElementById(position + "Image");
-
-  if (image) {
-    if (card.image) {
-      image.src = card.image;
-      image.style.display = "block";
-    } else {
-      image.src = "";
-      image.style.display = "none";
-    }
-  }
-}
-
-const image = document.getElementById(position + “Image”);
-
-if (card.image) {
-image.src = card.image;
-image.style.display = “block”;
-} else {
-image.src = “”;
-image.style.display = “none”;
-}
 }
     function resetFlip() {
       document.getElementById("cardPast").classList.remove("flipped");
