@@ -411,11 +411,24 @@ future: “未来会有更稳定的生活感。你会把自己的 soft chaos 养
       const shuffled = [...tarotCards].sort(() => Math.random() - 0.5);
       return shuffled.slice(0, 3);
     }
-  function setCard(position, card, meaning) {
-document.getElementById(position + “Name”).innerText = card.name;
-document.getElementById(position + “En”).innerText = card.en;
-document.getElementById(position + “Keywords”).innerText = “关键词：” + card.keywords;
-document.getElementById(position + “Message”).innerText = card.messages[meaning];
+function setCard(position, card, meaning) {
+  document.getElementById(position + "Name").innerText = card.name;
+  document.getElementById(position + "En").innerText = card.en;
+  document.getElementById(position + "Keywords").innerText = "关键词：" + card.keywords;
+  document.getElementById(position + "Message").innerText = card.messages[meaning];
+
+  const image = document.getElementById(position + "Image");
+
+  if (image) {
+    if (card.image) {
+      image.src = card.image;
+      image.style.display = "block";
+    } else {
+      image.src = "";
+      image.style.display = "none";
+    }
+  }
+}
 
 const image = document.getElementById(position + “Image”);
 
